@@ -13,3 +13,13 @@ LAB-1 çalışması kapsamında temel proje kurulumu yapılmıştır.
 - TypeScript
 - Vite
 - Git & GitHub
+- ## LAB-3 Responsive Ekran Görüntüleri
+
+### 📱 Mobil Görünüm
+![Mobil](screenshots/mobil.png)
+
+### 📲 Tablet Görünüm
+![Tablet](screenshots/tablet.png)
+
+### 🖥 Masaüstü Görünüm
+![Desktop](screenshots/desktop.png)
