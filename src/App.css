@@ -1,46 +1,121 @@
-#root {
-  max-width: 1280px;
+/* Genel sifirlama */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: system-ui, sans-serif; line-height: 1.6; }
+
+/* Skip link: normalde gizli, Tab ile görünür */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: #1E3A8A;
+  color: white;
+  padding: 8px 16px;
+  z-index: 100;
+}
+.skip-link:focus { top: 0; }
+
+/* Focus göstergesi — ASLA kaldırma */
+:focus { outline: 2px solid #2563EB; outline-offset: 2px; }
+
+/* Linkler */
+a { color: #1E3A8A; }
+a:hover { text-decoration: underline; }
+
+/* Basit düzen (MOBİL varsayılan) */
+.site-header, .site-main, .site-footer {
+  max-width: 900px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 16px;
+}
+
+.site-header h1 {
   text-align: center;
+  margin-bottom: 8px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Nav: mobilde alt alta */
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+  padding: 12px 0;
+  align-items: center;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Projeler: mobilde tek sütun */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.project-card {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+/* Form stilleri */
+.form-group { margin-bottom: 1rem; }
+label { display: block; margin-bottom: 0.25rem; }
+input, textarea, select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+button {
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 6px;
+  background: #1E3A8A;
+  color: #fff;
+  cursor: pointer;
+}
+button:hover { filter: brightness(0.95); }
+
+.error-msg { color: red; font-size: 0.85rem; }
+
+/* =========================
+   TABLET (>= 640px)
+   ========================= */
+@media (min-width: 640px) {
+  .site-header h1 {
+    text-align: left;
   }
-  to {
-    transform: rotate(360deg);
+
+  /* Nav: yan yana */
+  .nav-list {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  /* Projeler: 2 sütun */
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+/* =========================
+   DESKTOP (>= 1024px)
+   ========================= */
+@media (min-width: 1024px) {
+  /* Header: başlık solda, nav sağda */
+  .site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
   }
-}
 
-.card {
-  padding: 2em;
-}
+  .site-header h1 {
+    margin-bottom: 0;
+  }
 
-.read-the-docs {
-  color: #888;
-}
-
-div {
-  padding: 40px;
+  .nav-list {
+    padding: 0;
+  }
 }
