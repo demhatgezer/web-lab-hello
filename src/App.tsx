@@ -1,143 +1,180 @@
-import "./App.css";
+import { useEffect, useState } from "react";
+import Button from "./components/Button";
+import Card from "./components/Card";
+import Input from "./components/Input";
+import UIKit from "./pages/UIKit";
 
 export default function App() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", darkMode);
+  }, [darkMode]);
+
   return (
     <>
-      {/* Skip link */}
-      <a href="#main-content" className="skip-link">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-blue-900 focus:px-4 focus:py-2 focus:text-white"
+      >
         Ana içeriğe atla
       </a>
 
-      <header className="site-header">
-        <h1>Demhat Gezer - Kişisel Portföy</h1>
+      <div className="min-h-screen bg-white text-slate-900 dark:bg-slate-900 dark:text-white">
+        <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur dark:border-slate-700 dark:bg-slate-900/90">
+          <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
+            <h1 className="text-3xl font-bold sm:text-4xl">
+              Demhat Gezer - Kişisel Portföy
+            </h1>
 
-        <nav aria-label="Ana navigasyon">
-          <ul className="nav-list">
-            <li>
-              <a href="#hakkimda">Hakkımda</a>
-            </li>
-            <li>
-              <a href="#projeler">Projeler</a>
-            </li>
-            <li>
-              <a href="#iletisim">İletişim</a>
-            </li>
-          </ul>
-        </nav>
-      </header>
+            <nav aria-label="Ana navigasyon">
+              <ul className="flex flex-col gap-2 sm:flex-row sm:gap-6">
+                <li>
+                  <a
+                    href="#hakkimda"
+                    className="font-medium text-blue-700 hover:underline dark:text-blue-400"
+                  >
+                    Hakkımda
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#projeler"
+                    className="font-medium text-blue-700 hover:underline dark:text-blue-400"
+                  >
+                    Projeler
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#iletisim"
+                    className="font-medium text-blue-700 hover:underline dark:text-blue-400"
+                  >
+                    İletişim
+                  </a>
+                </li>
+              </ul>
+            </nav>
 
-      <main id="main-content" className="site-main">
-        {/* HAKKIMDA */}
-        <section id="hakkimda" aria-labelledby="hakkimda-baslik">
-          <h2 id="hakkimda-baslik">Hakkımda</h2>
-
-          <p>
-            Merhaba! Ben Demhat. Bu sayfa LAB-3 kapsamında modern CSS ve
-            responsive tasarım teknikleri kullanılarak geliştirilmiştir.
-          </p>
-
-          <h3>Kullandığım Teknolojiler</h3>
-          <ul>
-            <li>React</li>
-            <li>TypeScript</li>
-            <li>Vite</li>
-            <li>Git & GitHub</li>
-          </ul>
-        </section>
-
-        {/* PROJELER */}
-        <section id="projeler" aria-labelledby="projeler-baslik">
-          <h2 id="projeler-baslik">Projelerim</h2>
-
-          <div className="projects-grid">
-            <article className="project-card">
-              <h3>Proje 1: Web Lab Hello</h3>
-              <p>
-                LAB-1, LAB-2 ve LAB-3 kapsamında geliştirilen React +
-                TypeScript + Vite projesi.
-              </p>
-              <p>
-                <strong>Kullanılanlar:</strong> React, TypeScript, Vite
-              </p>
-            </article>
-
-            <article className="project-card">
-              <h3>Proje 2: Kişisel Web Sayfası</h3>
-              <p>Semantik HTML5 ve erişilebilirlik kuralları ile hazırlanmıştır.</p>
-              <p>
-                <strong>Kullanılanlar:</strong> HTML, CSS
-              </p>
-            </article>
-
-            <article className="project-card">
-              <h3>Proje 3: (Ekstra)</h3>
-              <p>Responsive tasarım teknikleri uygulanmıştır.</p>
-              <p>
-                <strong>Kullanılanlar:</strong> CSS Grid, Flexbox
-              </p>
-            </article>
+            <Button onClick={() => setDarkMode(!darkMode)}>
+              {darkMode ? "Açık Mod" : "Koyu Mod"}
+            </Button>
           </div>
-        </section>
+        </header>
 
-        {/* İLETİŞİM */}
-        <section id="iletisim" aria-labelledby="iletisim-baslik">
-          <h2 id="iletisim-baslik">İletişim</h2>
+        <main id="main-content" className="mx-auto max-w-6xl px-4 py-10">
+          <section id="hakkimda" className="mb-12">
+            <h2 className="mb-4 text-2xl font-semibold sm:text-3xl">
+              Hakkımda
+            </h2>
 
-          <form action="#" method="POST" noValidate>
-            <fieldset>
-              <legend>İletişim Formu</legend>
+            <p className="max-w-3xl text-lg leading-8 text-slate-700 dark:text-slate-300">
+              Merhaba! Ben Demhat. Bu sayfa LAB-4 kapsamında Tailwind CSS,
+              React component yapısı ve dark mode özellikleri kullanılarak
+              geliştirilmiştir.
+            </p>
 
-              <div className="form-group">
-                <label htmlFor="name">Ad Soyad:</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  minLength={2}
-                />
-              </div>
+            <div className="mt-6 rounded-xl border border-slate-200 bg-slate-50 p-6 dark:border-slate-700 dark:bg-slate-800">
+              <h3 className="mb-3 text-xl font-semibold">
+                Kullandığım Teknolojiler
+              </h3>
+              <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
+                <li className="rounded-lg bg-white px-4 py-3 shadow dark:bg-slate-700">
+                  React
+                </li>
+                <li className="rounded-lg bg-white px-4 py-3 shadow dark:bg-slate-700">
+                  TypeScript
+                </li>
+                <li className="rounded-lg bg-white px-4 py-3 shadow dark:bg-slate-700">
+                  Vite
+                </li>
+                <li className="rounded-lg bg-white px-4 py-3 shadow dark:bg-slate-700">
+                  Tailwind CSS
+                </li>
+              </ul>
+            </div>
+          </section>
 
-              <div className="form-group">
-                <label htmlFor="email">E-posta:</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                />
-              </div>
+          <section id="projeler" className="mb-12">
+            <h2 className="mb-6 text-2xl font-semibold sm:text-3xl">
+              Projelerim
+            </h2>
 
-              <div className="form-group">
-                <label htmlFor="subject">Konu:</label>
-                <select id="subject" name="subject" required defaultValue="">
-                  <option value="">-- Seçiniz --</option>
-                  <option value="is">İş Teklifi</option>
-                  <option value="soru">Soru</option>
-                  <option value="oneri">Öneri</option>
-                </select>
-              </div>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              <Card title="Proje 1: Web Lab Hello">
+                <p className="mb-3 text-slate-700 dark:text-slate-300">
+                  LAB-1, LAB-2 ve LAB-3 kapsamında geliştirilen React +
+                  TypeScript + Vite projesi.
+                </p>
+                <p>
+                  <strong>Kullanılanlar:</strong> React, TypeScript, Vite
+                </p>
+              </Card>
 
-              <div className="form-group">
-                <label htmlFor="message">Mesajınız:</label>
+              <Card title="Proje 2: Kişisel Web Sayfası">
+                <p className="mb-3 text-slate-700 dark:text-slate-300">
+                  Semantik HTML5, erişilebilirlik ve responsive tasarım
+                  ilkeleriyle hazırlanmıştır.
+                </p>
+                <p>
+                  <strong>Kullanılanlar:</strong> HTML, CSS
+                </p>
+              </Card>
+
+              <Card title="Proje 3: Tailwind UI Çalışması">
+                <p className="mb-3 text-slate-700 dark:text-slate-300">
+                  Tailwind CSS ile modern component tabanlı arayüz geliştirme
+                  çalışmasıdır.
+                </p>
+                <p>
+                  <strong>Kullanılanlar:</strong> Tailwind CSS, React
+                </p>
+              </Card>
+            </div>
+          </section>
+
+          <section id="iletisim" className="mb-12">
+            <h2 className="mb-6 text-2xl font-semibold sm:text-3xl">
+              İletişim
+            </h2>
+
+            <form className="space-y-5 rounded-xl border border-slate-200 bg-slate-50 p-6 dark:border-slate-700 dark:bg-slate-800">
+              <Input
+                label="Ad Soyad"
+                id="name"
+                placeholder="Ad Soyad giriniz"
+              />
+
+              <Input
+                label="E-posta"
+                id="email"
+                type="email"
+                placeholder="ornek@mail.com"
+              />
+
+              <div>
+                <label htmlFor="message" className="mb-2 block font-medium">
+                  Mesaj
+                </label>
                 <textarea
                   id="message"
-                  name="message"
                   rows={5}
-                  required
-                  minLength={10}
+                  className="w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-blue-500 focus:outline-none dark:border-slate-600 dark:bg-slate-900"
+                  placeholder="Mesajınızı yazınız"
                 />
               </div>
 
-              <button type="submit">Gönder</button>
-            </fieldset>
-          </form>
-        </section>
-      </main>
+              <Button type="submit">Gönder</Button>
+            </form>
+          </section>
 
-      <footer className="site-footer">
-        <p>&copy; 2026 Demhat Gezer. Tüm hakları saklıdır.</p>
-      </footer>
+          <UIKit />
+        </main>
+
+        <footer className="border-t border-slate-200 px-4 py-6 text-center text-sm text-slate-600 dark:border-slate-700 dark:text-slate-400">
+          &copy; 2026 Demhat Gezer. Tüm hakları saklıdır.
+        </footer>
+      </div>
     </>
   );
 }
